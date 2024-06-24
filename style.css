@@ -1,5 +1,20 @@
 #flappyBird{
     width: 50px;
     height: auto;
-    position:relative;
+    position:absolute;
+}
+
+#bottomPipe{
+    /* top:; */
+    position:absolute;
+    width: 100px;
+    height: auto;
+    display:none;
+    /* transform: scaleY(-1); */
+}
+
+
+
+#body{
+    overflow:hidden;
 }
