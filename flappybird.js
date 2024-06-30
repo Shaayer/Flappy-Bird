@@ -37,7 +37,15 @@ async function gameLoop() {
             if(r<=75){
                 createPipe(pipes)
                 pipesListX.push(screenX)
-                pipesListY.push(Math.random()*screenY)
+                var r=Math.random()*screenY
+                console.log(screenY)
+                if(r>screenY-400){
+                    r=screenY-400
+                }
+                if(r<200){
+                    r=200
+                }
+                pipesListY.push(r)
                 createPipeTop(topPipes)
                 lastPipe=0
             }
