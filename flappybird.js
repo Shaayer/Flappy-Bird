@@ -6,6 +6,7 @@ var pipesListY=[]
 var pipes=[]
 var lastPipe=0//how far away the last pipe was so the game is possible. Must be greater than some number to allow new pipe to spawn
 var topPipes=[]
+var gap=280
 
 
 var birdHeight = 35.078;
@@ -57,7 +58,7 @@ async function gameLoop() {
         }
 
         if (y + birdHeight > window.innerHeight) {
-            alert("game over")
+            // alert("game over")
         }
         if (y < 0) {
             y = 0
@@ -71,9 +72,13 @@ async function gameLoop() {
 
 
         bird.style.top = y + "px"
+        hit()
+
 
         y += vel;
         await sleep(16 + 2 / 3);
+
+        
     }
 
 
@@ -96,6 +101,43 @@ function changePipes(List){
         List[i]-=3
     }
     lastPipe+=3
+}
+
+function hit(){
+    
+    for(let i=0;i<pipes.length;i++){
+        var styleStr=pipes[i].style.left
+        var left=""
+        for(let y=0;y<styleStr.length;y++){
+            if(styleStr[y] != "p" && styleStr[y] != "x"){
+                left+=styleStr[y]
+            }
+        }
+        left=Number(left)
+
+        
+        
+
+        
+        var bottom=pipesListY[i]-gap
+
+        var top=pipesListY[i]
+
+        
+        
+
+        if(left<50 && left>0){
+            console.log(top)
+            console.log(bottom)
+            console.log("y: ",y)
+            if(y>top){
+                alert("hit bottom")
+            }
+            if(y<bottom){
+                alert("hit top")
+            }
+        }
+    }
 }
 
 function createPipe(list){
