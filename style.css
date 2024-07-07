@@ -14,7 +14,9 @@
 }
 
 
-
 #body{
     overflow:hidden;
+    background-image: url("Background1.png");
+    background-size: 100vh 100vh;
+    background-repeat: repeat-x;
 }

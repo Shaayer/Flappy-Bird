@@ -17,7 +17,6 @@ var y = 0
 var acc = 0.05
 var vel = 0
 var pressed = false
-
 var bottomPipe=document.getElementById("bottomPipe")
 document.addEventListener('keyup', (e) => {
 
@@ -33,7 +32,7 @@ async function gameLoop() {
 
 
     while (true) {
-        if(lastPipe>=300){
+        if(lastPipe>=500){
             r=Math.random()*100
             if(r<=75){
                 createPipe(pipes)
@@ -58,7 +57,7 @@ async function gameLoop() {
         }
 
         if (y + birdHeight > window.innerHeight) {
-            // alert("game over")
+            alert("game over")
         }
         if (y < 0) {
             y = 0
