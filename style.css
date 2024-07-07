@@ -24,4 +24,6 @@
 #score{
     text-align: center;
     font-size: xx-large;
+    text-shadow: rgb(0,0,0) 5px 0 10px;
+    color:white;
 }

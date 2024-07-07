@@ -12,7 +12,16 @@ var shownScore=0
 
 var birdHeight = 35.078;
 
-
+var r=Math.random()*9+1
+r=Math.floor(r)
+if(r==10){
+    r=9
+}
+var back="Background"+r
+back+=".png"
+back="url('"+back+"')"
+var body=document.getElementById("body")
+body.style.backgroundImage = back
 
 var y = 0
 var acc = 0.05
@@ -59,7 +68,7 @@ async function gameLoop() {
         }
 
         if (y + birdHeight > window.innerHeight) {
-            alert("game over")
+            alert("game over Score: " +shownScore)
         }
         if (y < 0) {
             y = 0
@@ -75,7 +84,7 @@ async function gameLoop() {
         bird.style.top = y + "px"
         hit()
 
-        score.textContent=shownScore/16
+        score.textContent=shownScore
         y += vel;
         await sleep(16 + 2 / 3);
 
@@ -132,11 +141,11 @@ function hit(){
             console.log(bottom)
             console.log("y: ",y)
             if(y>top){
-                alert("hit bottom")
+                alert("game over Score: "+shownScore)
             } else if(y<bottom){
-                alert("hit top")
+                alert("game over Score: " +shownScore)
             } else{
-                shownScore+=1
+                shownScore+=1/16
             }
         }
     }
