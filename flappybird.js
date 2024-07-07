@@ -7,6 +7,7 @@ var pipes=[]
 var lastPipe=0//how far away the last pipe was so the game is possible. Must be greater than some number to allow new pipe to spawn
 var topPipes=[]
 var gap=280
+var shownScore=0
 
 
 var birdHeight = 35.078;
@@ -18,6 +19,7 @@ var acc = 0.05
 var vel = 0
 var pressed = false
 var bottomPipe=document.getElementById("bottomPipe")
+var score=document.getElementById("score")
 document.addEventListener('keyup', (e) => {
 
 
@@ -73,7 +75,7 @@ async function gameLoop() {
         bird.style.top = y + "px"
         hit()
 
-
+        score.textContent=shownScore/16
         y += vel;
         await sleep(16 + 2 / 3);
 
@@ -131,9 +133,10 @@ function hit(){
             console.log("y: ",y)
             if(y>top){
                 alert("hit bottom")
-            }
-            if(y<bottom){
+            } else if(y<bottom){
                 alert("hit top")
+            } else{
+                shownScore+=1
             }
         }
     }
